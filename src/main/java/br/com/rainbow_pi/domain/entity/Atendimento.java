@@ -5,6 +5,7 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,6 +24,7 @@ public class Atendimento implements Serializable {
 	@Column(name="id_profissional")
 	private String idProfissional;
 	
+	@NotBlank
 	@Column(name="status_atendimento")
 	private String statusAtendimento;
 }
