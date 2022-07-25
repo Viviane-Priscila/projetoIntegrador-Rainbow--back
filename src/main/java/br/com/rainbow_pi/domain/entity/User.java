@@ -26,6 +26,12 @@ public class User implements UserDetails, Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
+	
+	public User() {
+		super();
+	
+	}
+
 	public User(Long id, String userName, String fullName, String password, Boolean accountNonExpired,
 			Boolean accountNonLocked, Boolean credentialsNonExpired, Boolean enabled, List<Permission> permissions) {
 		this.id = id;
@@ -132,6 +138,7 @@ public class User implements UserDetails, Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="user_id")
 	private Long id;
 	
 	@Column(name="user_name", unique=true)

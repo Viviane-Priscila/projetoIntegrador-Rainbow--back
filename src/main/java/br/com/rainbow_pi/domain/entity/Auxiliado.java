@@ -1,6 +1,5 @@
 package br.com.rainbow_pi.domain.entity;
 
-import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -14,50 +13,48 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "pessoas")
+@Table(name = "tb_auxiliado")
 @Data
+@EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
-public class Pessoa implements Serializable{
-	
+
+public class Auxiliado extends User{
+
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="id_pessoa")
+	@Column(name="id_auxiliado")
 	private Long id;
 	
 	@NotBlank
 	@Size(max=60)
-	@Column(name="nome_pessoa")
+	@Column(name="nome_auxiliado")
 	private String nome;
 	
 	@NotBlank
 	@Size(max=60)
 	@Email
-	@Column(name="email_pessoa")
+	@Column(name="email_auxiliado")
 	private String email;
 	
 	@NotBlank
 	@Size(max=15)
-	@Column(name="cpf_pessoa")
+	@Column(name="cpf_auxiliado")
 	private String cpf;
-	
-	@NotBlank
-	@Size(max=10)
-	@Column(name="login_pessoa")
-	private String login;
-	
+		
 	@NotBlank
 	@Size(max=20)
-	@Column(name="tipodeajuda_pessoa")
+	@Column(name="tipodeajuda_auxiliado")
 	private String tipoDeAjuda;
 	
 	@NotBlank
 	@Size(max=10) 
-	@Column(name="datanasc_pessoa")
+	@Column(name="datanasc_auxiliado")
 	private Date dataNasc;
 	
 	
