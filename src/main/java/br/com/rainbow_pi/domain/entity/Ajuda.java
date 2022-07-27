@@ -36,5 +36,11 @@ public class Ajuda implements Serializable {
 	@Size(max=200)
 	@Column(name="descricao_ajuda")	
 	private String descricao;
+	
+	@Column(name="conteudo_link")
+	private String conteudo;
+	
+	@Column(name="url_link")
+	private String url;
 
 }

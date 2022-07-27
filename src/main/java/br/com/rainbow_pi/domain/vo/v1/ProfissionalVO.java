@@ -21,11 +21,14 @@ public class ProfissionalVO extends RepresentationModel<ProfissionalVO> implemen
 	private String nome;
 	private String email;
 	private String cpf;
+	private String profissao;
+	private String registroProfissional;
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = super.hashCode();
-		result = prime * result + Objects.hash(email, key, nome);
+		result = prime * result + Objects.hash(email, key, nome, cpf, profissao, registroProfissional);
 		return result;
 	}
 	@Override
@@ -37,7 +40,7 @@ public class ProfissionalVO extends RepresentationModel<ProfissionalVO> implemen
 		if (getClass() != obj.getClass())
 			return false;
 		ProfissionalVO other = (ProfissionalVO) obj;
-		return Objects.equals(email, other.email) && Objects.equals(key, other.key) && Objects.equals(nome, other.nome);
+		return Objects.equals(email, other.email) && Objects.equals(key, other.key) && Objects.equals(nome, other.nome)&& Objects.equals(cpf, other.cpf) && Objects.equals(profissao, other.profissao)&& Objects.equals(registroProfissional, other.registroProfissional);
 	}
 
 }

@@ -1,12 +1,12 @@
 package br.com.rainbow_pi.domain.vo.v1;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Objects;
 
 import org.springframework.hateoas.RepresentationModel;
 
 import com.github.dozermapper.core.Mapping;
-
 
 import lombok.Getter;
 import lombok.Setter;
@@ -23,13 +23,13 @@ public class AuxiliadoVO extends RepresentationModel<AuxiliadoVO> implements Ser
 	private String email;
 	private String cpf;
 	private String tipoDeAjuda;
-	
+	private Date dataNasc;
 	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = super.hashCode();
-		result = prime * result + Objects.hash(email, key, nome, cpf);
+		result = prime * result + Objects.hash(email, key, nome, cpf, tipoDeAjuda, dataNasc);
 		return result;
 	}
 	@Override
@@ -41,6 +41,7 @@ public class AuxiliadoVO extends RepresentationModel<AuxiliadoVO> implements Ser
 		if (getClass() != obj.getClass())
 			return false;
 		AuxiliadoVO other = (AuxiliadoVO) obj;
-		return Objects.equals(email, other.email) && Objects.equals(key, other.key) && Objects.equals(nome, other.nome) && Objects.equals(cpf, other.cpf);
+		return Objects.equals(email, other.email) && Objects.equals(key, other.key) && Objects.equals(nome, other.nome) && Objects.equals(cpf, other.cpf) && Objects.equals(tipoDeAjuda, other.tipoDeAjuda)&& Objects.equals(dataNasc, other.dataNasc);
+		
 	}
 }
