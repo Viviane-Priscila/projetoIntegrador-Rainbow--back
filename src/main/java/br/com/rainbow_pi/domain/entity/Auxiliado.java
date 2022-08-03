@@ -1,5 +1,6 @@
 package br.com.rainbow_pi.domain.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -13,19 +14,17 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "tb_auxiliado")
+@Table(name = "tb_auxiliados")
 @Data
-@EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
 
-public class Auxiliado extends User{
+public class Auxiliado implements Serializable{
 
 	private static final long serialVersionUID = 1L;
-
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id_auxiliado")

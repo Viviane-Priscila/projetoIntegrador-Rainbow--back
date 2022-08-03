@@ -21,54 +21,54 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.rainbow_pi.domain.vo.v1.AuxiliadoVO;
-import br.com.rainbow_pi.service.AuxiliadoService;
+import br.com.rainbow_pi.domain.vo.v1.ProfissionalVO;
+import br.com.rainbow_pi.service.ProfissionalService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
-@Tag(name="Auxiliado Endpoint")
+@Tag(name="Profissional Endpoint")
 @RestController
-@RequestMapping("api/auxiliado/v1")
-public class AuxiliadoController {
+@RequestMapping("api/profissional/v1")
+public class ProfissionalController {
 
 	@Autowired
-	AuxiliadoService service;
+	ProfissionalService service;
 
 	@CrossOrigin("localhost:8080")
 	@RequestMapping(method = RequestMethod.GET, produces = { "application/json", "application/xml" })
-	@Operation(summary="Listar todos os auxiliados")
+	@Operation(summary="Listar todos os profissionais")
 	@ResponseStatus(value = HttpStatus.OK)
-	public List<AuxiliadoVO> findAll() {
-		List<AuxiliadoVO> auxiliadoVO = service.buscarTodos();
-		auxiliadoVO.stream().forEach(p -> p.add(linkTo(methodOn(AuxiliadoController.class).findById(p.getKey())).withSelfRel()));
-		return auxiliadoVO;
+	public List<ProfissionalVO> findAll() {
+		List<ProfissionalVO> profissionalVO = service.buscarTodos();
+		profissionalVO.stream().forEach(p -> p.add(linkTo(methodOn(ProfissionalController.class).findById(p.getKey())).withSelfRel()));
+		return profissionalVO;
 	}
 
 	@CrossOrigin({"localhost:8080",  }) 
 	@GetMapping(value = "/{id}", produces = { "application/json", "application/xml" })
 	@ResponseStatus(value = HttpStatus.OK)
-	public AuxiliadoVO findById(@PathVariable("id") Long id) {
-		AuxiliadoVO auxiliadoVO = service.buscarPorId(id);
-		auxiliadoVO.add(linkTo(methodOn(AuxiliadoController.class).findById(id)).withSelfRel());
-		return auxiliadoVO;
+	public ProfissionalVO findById(@PathVariable("id") Long id) {
+		ProfissionalVO profissionalVO = service.buscarPorId(id);
+		profissionalVO.add(linkTo(methodOn(ProfissionalController.class).findById(id)).withSelfRel());
+		return profissionalVO;
 	}
 
 	@PostMapping(consumes = { "application/json", "application/xml" }, produces = { "application/json",
 			"application/xml" })
 	@ResponseStatus(value = HttpStatus.CREATED)
-	public AuxiliadoVO create(@Valid @RequestBody AuxiliadoVO auxiliado) {
-		AuxiliadoVO auxiliadoVO = service.inserir(auxiliado);
-		auxiliadoVO.add(linkTo(methodOn(AuxiliadoController.class).findById(auxiliadoVO.getKey())).withSelfRel());
-		return auxiliadoVO;
+	public ProfissionalVO create(@Valid @RequestBody ProfissionalVO profissional) {
+		ProfissionalVO profissionalVO = service.inserir(profissional);
+		profissionalVO.add(linkTo(methodOn(ProfissionalController.class).findById(profissionalVO.getKey())).withSelfRel());
+		return profissionalVO;
 	}
 
 	@PutMapping(consumes = { "application/json", "application/xml" }, produces = { "application/json",
 			"application/xml" })
 	@ResponseStatus(value = HttpStatus.OK)
-	public AuxiliadoVO update(@Valid @RequestBody AuxiliadoVO auxiliado) {
-		AuxiliadoVO auxiliadoVO = service.atualizar(auxiliado);
-		auxiliadoVO.add(linkTo(methodOn(AuxiliadoController.class).findById(auxiliadoVO.getKey())).withSelfRel());
-		return auxiliadoVO;
+	public ProfissionalVO update(@Valid @RequestBody ProfissionalVO profissional) {
+		ProfissionalVO profissionalVO = service.atualizar(profissional);
+		profissionalVO.add(linkTo(methodOn(ProfissionalController.class).findById(profissionalVO.getKey())).withSelfRel());
+		return profissionalVO;
 	}
 
 	@DeleteMapping(value = "/{id}")

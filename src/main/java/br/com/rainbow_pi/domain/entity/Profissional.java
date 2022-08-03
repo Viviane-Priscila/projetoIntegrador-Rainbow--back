@@ -1,5 +1,7 @@
 package br.com.rainbow_pi.domain.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,19 +18,19 @@ import lombok.Setter;
 
 
 @Entity
-@Table(name="tb_profissional")
+@Table(name="tb_profissionais")
 @NoArgsConstructor
 @Getter
 @Setter
-public class Profissional extends User{
+public class Profissional implements Serializable{
 
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id_profissional")
-	private Long idProfissional;
-
+	private Long id;
+	
 	@NotBlank
 	@Size(max=60)
 	@Column(name="nome_profissional")
